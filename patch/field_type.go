@@ -75,7 +75,7 @@ func (p *Patcher) patchTypeUsage(id *ast.Ident, obj types.Object) {
 	// we don't want to modify the getter body,
 	// so we check if we are in the getter declaration body ?
 	node := ast.Node(id)
-	for{
+	for {
 		node = p.findParentNode(node)
 		if node == nil {
 			break
@@ -93,7 +93,7 @@ func (p *Patcher) patchTypeUsage(id *ast.Ident, obj types.Object) {
 		originalType = t.Name()
 	case *types.Pointer:
 		originalType = t.String()
-		desiredType = "*"+desiredType
+		desiredType = "*" + desiredType
 	case *types.Signature:
 		if t.Results().Len() != 1 {
 			return
@@ -209,8 +209,7 @@ func (p *Patcher) patchTypeUsage(id *ast.Ident, obj types.Object) {
 }
 
 func isTypeValid(typeName string) bool {
-	return strings.Contains(typeName, ".") ||
-		strings.Contains(typeName, "/") ||
+	return /*strings.Contains(typeName, ".") ||*/ strings.Contains(typeName, "/") ||
 		strings.Contains(typeName, "[]") ||
 		strings.Contains(typeName, "*")
 }
