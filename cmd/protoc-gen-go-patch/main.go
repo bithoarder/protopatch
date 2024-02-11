@@ -16,12 +16,6 @@ import (
 func main() {
 	log.SetFlags(0)
 
-	if len(os.Args) == 2 && os.Args[1] == "--version" {
-		log.Printf("%v %v\n", filepath.Base(os.Args[0]), patch.Version)
-		os.Exit(1)
-		return
-	}
-
 	err := run()
 	if err != nil {
 		log.Printf("Error: %s", err)

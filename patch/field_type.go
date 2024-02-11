@@ -209,7 +209,7 @@ func (p *Patcher) patchTypeUsage(id *ast.Ident, obj types.Object) {
 }
 
 func isTypeValid(typeName string) bool {
-	return /*strings.Contains(typeName, ".") ||*/ strings.Contains(typeName, "/") ||
+	return strings.Contains(typeName, ".") || strings.Contains(typeName, "/") ||
 		strings.Contains(typeName, "[]") ||
 		strings.Contains(typeName, "*")
 }
